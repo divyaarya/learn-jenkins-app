@@ -42,7 +42,7 @@ pipeline {
                 }
             }
             steps {
-                ng install serve
+                npm install serve
                 node_modules/.bin/serve -s build
                 npx playwright test
             }
