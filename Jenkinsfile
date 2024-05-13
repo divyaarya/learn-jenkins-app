@@ -9,7 +9,6 @@ pipeline {
                     reuseNode true
                 }
             }
-            
             steps {
                 echo 'Hello World'
                 sh '''
@@ -17,6 +16,21 @@ pipeline {
                     npm ci
                     npm run build
                     ls -al
+                '''
+            }
+        }
+        stage('Test') {
+            agent {
+                docker {
+                    image 'node:18-alpine'
+                    reuseNode true
+                }
+            }
+            steps {
+                echo 'Testing....'
+                sh '''
+                    test -f build/index.html
+                    npm test
                 '''
             }
         }
