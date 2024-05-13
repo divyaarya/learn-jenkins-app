@@ -15,7 +15,7 @@ pipeline {
                 }
             }
             steps {
-                echo 'Hello World'
+                echo 'Small Change.....'
                 sh '''
                     ls -al
                     npm ci
